@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component } from '@angular/core';
 import { Satellite } from './satellite';
 
@@ -17,10 +18,12 @@ export class AppComponent {
     window.fetch(satellitesUrl).then(function(response) {
        response.json().then(function(data) {
           let fetchedSatellites = data.satellites;
-          for (let i = 0; i > fetchedSatellites.length; i++){
-            let satellite =  new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
-            return this.sourceList.push(satellite);
+          for (let i = 0; i < fetchedSatellites.length; i++){
+            let newSatellite =  new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
+            let newSatelliteArray = this.sourceList.push(newSatellite);
+            return newSatelliteArray;
           }
+          //this.sourceList.push(newSatellite);
         }.bind(this));
     }.bind(this));
  
