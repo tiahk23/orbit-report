@@ -19,11 +19,11 @@ export class AppComponent {
        response.json().then(function(data) {
           let fetchedSatellites = data.satellites;
           for (let i = 0; i < fetchedSatellites.length; i++){
-            let newSatellite =  new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
-            let newSatelliteArray = this.sourceList.push(newSatellite);
-            return newSatelliteArray;
+            let newSatellite = new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
+            this.sourceList.push(newSatellite);
+            
           }
-          //this.sourceList.push(newSatellite);
+          
         }.bind(this));
     }.bind(this));
  
