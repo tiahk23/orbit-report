@@ -1,10 +1,11 @@
+import { ɵbypassSanitizationTrustResourceUrl } from "@angular/core";
+
 export class Satellite {
     name: string;
     orbitType: string;
     type: string;
     operational: boolean;
     launchDate: string;
-    typeValue: boolean;
     constructor(name:string, type:string, launchDate:string, orbitType:string, operational:boolean){
         this.name = name;
         this.type = type;
@@ -15,10 +16,10 @@ export class Satellite {
     }
 
     shouldShowWarning(){
-        if(this.type === 'Space Derbris'){
-            this.typeValue = true;
+        if(this.type == 'Space Debris'){
+            return true;
         } else {
-            this.typeValue = false;
+            return false;
         }
     }
 }
